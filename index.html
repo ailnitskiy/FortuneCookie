@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Text Display</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .text {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="text" id="text"></div>
+
+    <script>
+        // Hardcoded array of texts
+        const texts = [
+            "Welcome to our site!",
+            "Enjoy your visit!",
+            "Random thoughts for a random world.",
+            "Hello there, traveler!",
+            "This is your text of the day!"
+        ];
+
+        // Get the user's text from localStorage
+        let userText = localStorage.getItem('randomText');
+
+        // If no text is stored, select a random one and save it
+        if (!userText) {
+            const randomIndex = Math.floor(Math.random() * texts.length);
+            userText = texts[randomIndex];
+            localStorage.setItem('randomText', userText);
+        }
+
+        // Display the text on the page
+        document.getElementById('text').textContent = userText;
+    </script>
+</body>
+</html>
